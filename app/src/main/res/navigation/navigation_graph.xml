@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/navigation_graph"
+	app:startDestination="@id/fragment_fact">
+
+	<fragment
+		android:id="@+id/fragment_fact"
+		android:name="com.example.randomuselessfacts.presentation.fragment.FactFragment"
+		tools:layout="@layout/fragment_fact"
+		android:label="Fact">
+		<action
+			android:id="@+id/action_fragment_fact_to_fragment_history_facts"
+			app:destination="@id/fragment_history_facts" />
+		<action
+			android:id="@+id/action_fragment_fact_to_fragment_favourite_facts"
+			app:destination="@id/fragment_favourite_facts" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/fragment_favourite_facts"
+		android:name="com.example.randomuselessfacts.presentation.fragment.FavouriteFactsFragment"
+		tools:layout="@layout/fragment_favourite_facts"
+		android:label="Favourite Facts">
+	</fragment>
+
+	<fragment
+		android:id="@+id/fragment_history_facts"
+		android:name="com.example.randomuselessfacts.presentation.fragment.HistoryFactsFragment"
+		tools:layout="@layout/fragment_history_facts"
+		android:label="History Facts">
+	</fragment>
+
+</navigation>

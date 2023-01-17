@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+		<import type="android.view.View"/>
+		<variable
+			name="viewModel"
+			type="com.example.randomuselessfacts.presentation.viewmodel.FactViewModel" />
+	</data>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:id="@+id/layoutButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true"
+			android:layout_marginBottom="15dp"
+			android:orientation="horizontal">
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id="@+id/openHistoryButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="5dp"
+				android:src="@drawable/history"
+				android:enabled="@{viewModel.isLoading ? false : true}"
+				android:contentDescription="TODO">
+			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id="@+id/openFavouriteButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="5dp"
+				android:src="@drawable/favorite"
+				android:enabled="@{viewModel.isLoading ? false : true}"
+				android:contentDescription="TODO">
+			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="5dp"
+				android:src="@drawable/favorite_add"
+				android:onClick="@{() -> viewModel.saveFavouriteFacts()}"
+				android:enabled="@{viewModel.isLoading ? false : true}"
+				android:contentDescription="TODO">
+			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="5dp"
+				android:src="@drawable/daily"
+				android:onClick="@{() -> viewModel.getDailyFact()}"
+				android:enabled="@{viewModel.isLoading ? false : true}"
+				android:contentDescription="TODO">
+			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id="@+id/randomBtn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="5dp"
+				android:src="@drawable/update"
+				android:onClick="@{() -> viewModel.getRandomFact()}"
+				android:enabled="@{viewModel.isLoading ? false : true}"
+				android:contentDescription="TODO">
+			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+		</LinearLayout>
+
+		<ScrollView
+			android:id="@+id/scroll"
+			android:layout_above="@id/layoutButton"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_gravity="center"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ProgressBar
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="@{viewModel.isLoading == true ? View.VISIBLE : View.GONE}"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"/>
+
+				<TextView
+					android:text="@{viewModel.fact.text}"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="30sp"
+					android:padding="50dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent">
+				</TextView>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</ScrollView>
+	</RelativeLayout>
+</layout>
