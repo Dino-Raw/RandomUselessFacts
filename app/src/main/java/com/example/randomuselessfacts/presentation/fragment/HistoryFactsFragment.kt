@@ -9,6 +9,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.randomuselessfacts.R
 import com.example.randomuselessfacts.app.App
 import com.example.randomuselessfacts.databinding.FragmentHistoryFactsBinding
@@ -40,7 +41,7 @@ class HistoryFactsFragment: Fragment(R.layout.fragment_history_facts) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         observers()
-        setupMenu()
+        initBarMenu()
         return binding.root
     }
 
@@ -50,7 +51,7 @@ class HistoryFactsFragment: Fragment(R.layout.fragment_history_facts) {
         }
     }
 
-    private fun setupMenu() {
+    private fun initBarMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
             override fun onPrepareMenu(menu: Menu) {
             }
@@ -63,9 +64,10 @@ class HistoryFactsFragment: Fragment(R.layout.fragment_history_facts) {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == R.id.delete)
                     viewModel.removeHistoryFacts()
+                else
+                    findNavController().navigateUp()
                 return true
             }
-
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

@@ -9,7 +9,7 @@
 		android:id="@+id/fragment_fact"
 		android:name="com.example.randomuselessfacts.presentation.fragment.FactFragment"
 		tools:layout="@layout/fragment_fact"
-		android:label="Fact">
+		android:label="Random Useless Facts">
 		<action
 			android:id="@+id/action_fragment_fact_to_fragment_history_facts"
 			app:destination="@id/fragment_history_facts" />

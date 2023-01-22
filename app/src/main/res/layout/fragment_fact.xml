@@ -15,88 +15,63 @@
 
 		<LinearLayout
 			android:id="@+id/layoutButton"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:gravity="center"
 			android:layout_alignParentBottom="true"
-			android:layout_centerHorizontal="true"
 			android:layout_marginBottom="15dp"
 			android:orientation="horizontal">
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
-				android:id="@+id/openHistoryButton"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="5dp"
-				android:src="@drawable/history"
-				android:enabled="@{viewModel.isLoading ? false : true}"
-				android:contentDescription="TODO">
-			</com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
-				android:id="@+id/openFavouriteButton"
+			<Button
+				android:id="@+id/favorite_add"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="5dp"
-				android:src="@drawable/favorite"
-				android:enabled="@{viewModel.isLoading ? false : true}"
-				android:contentDescription="TODO">
-			</com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="5dp"
-				android:src="@drawable/favorite_add"
+				android:layout_marginHorizontal="10dp"
+				android:padding="20dp"
+				style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+				app:icon="@drawable/favorite_add"
 				android:onClick="@{() -> viewModel.saveFavouriteFacts()}"
-				android:enabled="@{viewModel.isLoading ? false : true}"
-				android:contentDescription="TODO">
-			</com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:enabled="@{viewModel.isLoading ? false : true}"/>
+			<Button
+				android:id="@+id/daily"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="5dp"
-				android:src="@drawable/daily"
+				android:layout_marginHorizontal="10dp"
+				android:padding="20dp"
+				style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+				app:icon="@drawable/daily"
 				android:onClick="@{() -> viewModel.getDailyFact()}"
-				android:enabled="@{viewModel.isLoading ? false : true}"
-				android:contentDescription="TODO">
-			</com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:enabled="@{viewModel.isLoading ? false : true}"/>
+			<Button
 				android:id="@+id/randomBtn"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="5dp"
-				android:src="@drawable/update"
+				android:layout_marginHorizontal="10dp"
+				android:padding="20dp"
+				style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+				app:icon="@drawable/update"
 				android:onClick="@{() -> viewModel.getRandomFact()}"
-				android:enabled="@{viewModel.isLoading ? false : true}"
-				android:contentDescription="TODO">
-			</com.google.android.material.floatingactionbutton.FloatingActionButton>
+				android:enabled="@{viewModel.isLoading ? false : true}"/>
 		</LinearLayout>
 
 		<ScrollView
 			android:id="@+id/scroll"
 			android:layout_above="@id/layoutButton"
+			android:layout_margin="10dp"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_margin="10dp"
 				android:layout_gravity="center"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
-				<ProgressBar
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:visibility="@{viewModel.isLoading == true ? View.VISIBLE : View.GONE}"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent"/>
 
 				<TextView
 					android:text="@{viewModel.fact.text}"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="30sp"
-					android:padding="50dp"
+					android:gravity="center"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"

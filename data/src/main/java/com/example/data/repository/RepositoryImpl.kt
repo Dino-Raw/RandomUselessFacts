@@ -1,5 +1,6 @@
 package com.example.data.repository
 
+import android.util.Log
 import com.example.data.model.FactNetworkModel
 import com.example.data.model.FactStorageModel
 import com.example.data.repository.network.ApiFactsService
@@ -17,7 +18,12 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRandomFact(): FactModel {
-        return factNetworkModelToFactModel(fact = apiFactsService.getRandomFact())
+        return try {
+            factNetworkModelToFactModel(fact = apiFactsService.getRandomFact())
+        } catch (e: java.lang.Exception) {
+            Log.d("ExceptionRepository", e.message.toString())
+            FactModel(text = "Error?")
+        }
     }
 
     override fun saveFacts(key: String, facts: List<FactModel>) {

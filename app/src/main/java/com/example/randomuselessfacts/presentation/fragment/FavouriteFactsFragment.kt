@@ -9,6 +9,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.randomuselessfacts.R
@@ -23,7 +24,6 @@ import javax.inject.Inject
 class FavouriteFactsFragment: Fragment(R.layout.fragment_favourite_facts) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
     lateinit var viewModel: FavouriteFactsViewModel
     private var _binding: FragmentFavouriteFactsBinding? = null
     private val binding get() = _binding!!
@@ -51,7 +51,7 @@ class FavouriteFactsFragment: Fragment(R.layout.fragment_favourite_facts) {
 
         ItemTouchHelper(swipeHandler).attachToRecyclerView(binding.listFavourite)
         observers()
-        setupMenu()
+        initBarMenu()
         return binding.root
     }
 
@@ -61,7 +61,7 @@ class FavouriteFactsFragment: Fragment(R.layout.fragment_favourite_facts) {
         }
     }
 
-    private fun setupMenu() {
+    private fun initBarMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
             override fun onPrepareMenu(menu: Menu) {
             }
@@ -74,9 +74,10 @@ class FavouriteFactsFragment: Fragment(R.layout.fragment_favourite_facts) {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == R.id.delete)
                     viewModel.removeFavouriteFacts()
+                else
+                    findNavController().navigateUp()
                 return true
             }
-
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

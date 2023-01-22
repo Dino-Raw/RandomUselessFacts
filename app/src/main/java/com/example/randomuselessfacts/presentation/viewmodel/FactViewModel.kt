@@ -21,6 +21,9 @@ class FactViewModel @Inject constructor(
     private val _fact: MutableLiveData<FactModel> = MutableLiveData()
     val fact: LiveData<FactModel> = _fact
 
+    private val _message: MutableLiveData<String> = MutableLiveData("")
+    val message: LiveData<String> = _message
+
     init {
         getDailyFact()
     }
@@ -47,7 +50,15 @@ class FactViewModel @Inject constructor(
 
     fun saveFavouriteFacts() {
         loadFavouriteFacts().also { list ->
-            list.forEach { if (_fact.value?.text == it.text) return }
+            list.forEach { fact ->
+                if (_fact.value?.text == fact.text) {
+                    _message.value = "Fact already in favorites"
+                    _message.value = ""
+                    return
+                }
+            }
+            _message.value = "Fact added to favorites"
+            _message.value = ""
             _fact.value?.let { list.add(it) }
             saveFactsToStorageUseCase.execute(key = "KEY_FAVOURITE", facts = list)
         }
@@ -74,5 +85,4 @@ class FactViewModel @Inject constructor(
                 .ifEmpty { mutableListOf<FactModel>() } as MutableList<FactModel>
             )
         }
-
 }

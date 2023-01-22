@@ -6,16 +6,19 @@
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/daily.xml" value="0.1" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/delete.xml" value="0.2105" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/favorite.xml" value="0.1" />
+        <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/favorite_add.xml" value="0.208" />
+        <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/favoutite_remove.xml" value="0.208" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/heart_add.xml" value="0.1" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/history.xml" value="0.2105" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/drawable/update.xml" value="0.1" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/activity_main.xml" value="0.30925925925925923" />
-        <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/fragment_fact.xml" value="0.25" />
+        <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/fragment_fact.xml" value="0.33" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/fragment_favourite_facts.xml" value="0.2630208333333333" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/fragment_history_facts.xml" value="0.2630208333333333" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/row_favourite_facts.xml" value="0.37083333333333335" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/layout/row_history_facts.xml" value="0.371875" />
         <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/menu/menu_delete.xml" value="0.371875" />
+        <entry key="..\:/Projects/RandomUselessFacts/app/src/main/res/menu/menu_facts.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

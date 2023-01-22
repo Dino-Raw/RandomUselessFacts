@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
+import androidx.core.app.TaskStackBuilder
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -11,6 +12,7 @@ import com.example.domian.model.FactModel
 import com.example.domian.usecase.*
 import com.example.randomuselessfacts.R
 import com.example.randomuselessfacts.app.App
+import com.google.android.material.elevation.SurfaceColors
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +23,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initBarColor()
         initNavigation()
+    }
+
+    private fun initBarColor() {
+        window.apply {
+            val color = SurfaceColors.SURFACE_2.getColor(context)
+            statusBarColor = color
+            navigationBarColor = color
+        }
     }
 
     private fun initNavigation() {
@@ -32,6 +43,11 @@ class MainActivity : AppCompatActivity() {
             R.id.fragment_favourite_facts
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun onBackPressed() {
